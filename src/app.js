@@ -3,17 +3,35 @@ const app = express();
 
 const usersRouter = require("./users/users.router");
 const pastesRouter = require("./pastes/pastes.router");
+const productsRouter = require("../api/products/products.router");
 
 // built-in middleware that adds a body property to the request (req.body).
 // The req.body object contains the parsed data.
 // If there's no body to parse, the Content-Type isn't matched, or an error occurs, then it returns an empty object ({}).
 app.use(express.json());
 
+// debugging
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
+
 // TODO: Follow instructions in the checkpoint to implement ths API.
 const pastes = require("./data/pastes-data");
 
 app.use("/users", usersRouter);
 app.use("/pastes", pastesRouter); // Note: app.use
+app.use("/api/products", productsRouter);
+
+// for debugging
+app.use((req, res, next) => {
+  console.log(`Request made to: ${req.url}`);
+  next();
+});
+
+require("dotenv").config();
+console.log("Development Database URL:", process.env.DEVELOPMENT_DATABASE_URL);
+console.log("Production Database URL:", process.env.PRODUCTION_DATABASE_URL);
 
 // // return one paste from /:pasteId
 // app.use("/pastes/:pasteId", (req, res, next) => {

@@ -9,26 +9,20 @@ const URL =
     ? PRODUCTION_DATABASE_URL
     : DEVELOPMENT_DATABASE_URL;
 
+console.log("====================");
+console.log(`Current environment: ${NODE_ENV}`);
+console.log(`Database URL: ${URL}`);
+
 module.exports = {
   development: {
     client: "postgresql",
     connection: URL,
-    migrations: {
-      directory: __dirname + "/api/db/migrations",
-    },
-    seeds: {
-      directory: __dirname + "/api/db/seeds",
-    },
+    useNullAsDefault: true,
   },
 
   production: {
     client: "postgresql",
     connection: URL,
-    migrations: {
-      directory: __dirname + "/api/db/migrations",
-    },
-    seeds: {
-      directory: __dirname + "/api/db/seeds",
-    },
+    useNullAsDefault: true,
   },
 };
