@@ -11,7 +11,6 @@ const URL =
 
 console.log("====================");
 console.log(`Current environment: ${NODE_ENV}`);
-console.log(`Database URL: ${URL}`);
 
 module.exports = {
   development: {

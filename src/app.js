@@ -29,10 +29,6 @@ app.use((req, res, next) => {
   next();
 });
 
-require("dotenv").config();
-console.log("Development Database URL:", process.env.DEVELOPMENT_DATABASE_URL);
-console.log("Production Database URL:", process.env.PRODUCTION_DATABASE_URL);
-
 // // return one paste from /:pasteId
 // app.use("/pastes/:pasteId", (req, res, next) => {
 //   const { pasteId } = req.params;
